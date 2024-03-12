@@ -71,7 +71,7 @@ function App() {
     <Contenedor>
       <Imagen src={ImagenCripto} alt="imagen de criptos" />
       <div>
-        <Heading>Cotiza Criptomonedas al instante</Heading>
+        <Heading>Cotiza las criptomonedas al instante</Heading>
         <Formulario setMonedas={setMonedas} />
         {cargando && <Spinner/>}
         {resultado.PRICE && <Resultado resultado={resultado}/> }
