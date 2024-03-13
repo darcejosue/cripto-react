@@ -43,6 +43,13 @@ const Heading = styled.h1`
   }
 `;
 
+const Footer = styled.footer`
+  font-family: "Lato", sans-serif;
+  color: #fff;
+  text-align: center;
+  margin-top: 80px;
+`;
+
 function App() {
   const [monedas, setMonedas] = useState({});
   const [resultado, setResultados] = useState({});
@@ -55,7 +62,7 @@ function App() {
         setCargando(true);
         setResultados({});
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptoMoneda}&tsyms=${moneda}`;
-        
+
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
 
@@ -68,15 +75,21 @@ function App() {
   }, [monedas]);
 
   return (
-    <Contenedor>
-      <Imagen src={ImagenCripto} alt="imagen de criptos" />
-      <div>
-        <Heading>Cotiza las criptomonedas al instante</Heading>
-        <Formulario setMonedas={setMonedas} />
-        {cargando && <Spinner/>}
-        {resultado.PRICE && <Resultado resultado={resultado}/> }
-      </div>
-    </Contenedor>
+    <>
+      <Contenedor>
+        <Imagen src={ImagenCripto} alt="imagen de criptos" />
+        <div>
+          <Heading>Cotiza las criptomonedas al instante</Heading>
+          <Formulario setMonedas={setMonedas} />
+          {cargando && <Spinner />}
+          {resultado.PRICE && <Resultado resultado={resultado} />}
+        </div>
+      </Contenedor>
+      <Footer>
+        Create by <span>Josue M Darce</span> <br />
+        <a href="https://github.com/darcejosue?tab=repositories"><code>Github link</code> </a>
+      </Footer>
+    </>
   );
 }
 
